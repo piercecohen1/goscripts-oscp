@@ -1,0 +1,19 @@
+# Ignore everything
+*
+
+# Don't ignore .gitignore
+!.gitignore
+
+# Include all .go files
+!*.go
+
+# Include go.mod and go.sum files
+!go.mod
+!go.sum
+
+# Include all subfolders
+!*/
+
+# Exclude base64_powershell/pythonversion
+base64_powershell/pythonversion/
+
