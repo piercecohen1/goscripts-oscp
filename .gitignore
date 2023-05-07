@@ -7,6 +7,9 @@
 # Include all .go files
 !*.go
 
+# Include all .sh files
+!*.sh
+
 # Include go.mod, go.sum, annd go.yml files
 !go.mod
 !go.sum
