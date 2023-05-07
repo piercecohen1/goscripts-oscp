@@ -7,6 +7,18 @@ import (
 	"golang.design/x/clipboard"
 )
 
+func escapeDoubleQuotes(input string) string {
+	var buf bytes.Buffer
+	for i := 0; i < len(input); i++ {
+		if input[i] == '"' && (i == 0 || input[i-1] != '\\') {
+			buf.WriteString(`\"`)
+		} else {
+			buf.WriteByte(input[i])
+		}
+	}
+	return buf.String()
+}
+
 func main() {
 	err := clipboard.Init()
 	if err != nil {
@@ -20,16 +32,7 @@ func main() {
 	input := string(data)
 
 	// Escape double quotes, except if they are already escaped
-	var buf bytes.Buffer
-	for i := 0; i < len(input); i++ {
-		if input[i] == '"' && (i == 0 || input[i-1] != '\\') {
-			buf.WriteString(`\"`)
-		} else {
-			buf.WriteByte(input[i])
-		}
-	}
-
-	escaped := buf.String()
+	escaped := escapeDoubleQuotes(input)
 
 	// Print the escaped string
 	fmt.Println(escaped)
@@ -37,4 +40,3 @@ func main() {
 	// Copy the escaped string back to the clipboard
 	clipboard.Write(clipboard.FmtText, []byte(escaped))
 }
-

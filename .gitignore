@@ -7,12 +7,18 @@
 # Include all .go files
 !*.go
 
-# Include go.mod and go.sum files
+# Include go.mod, go.sum, annd go.yml files
 !go.mod
 !go.sum
 
 # Include all subfolders
 !*/
+
+# Include test.txt for copy_path.go
+!path/test.txt
+
+# Include go.yml for Actions
+!.github/workflows/go.yml
 
 # Exclude base64_powershell/pythonversion
 base64_powershell/pythonversion/

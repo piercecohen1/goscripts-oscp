@@ -8,6 +8,10 @@ import (
 	"golang.design/x/clipboard"
 )
 
+func getAbsolutePath(fileName string) (string, error) {
+	return filepath.Abs(fileName)
+}
+
 func main() {
 	err := clipboard.Init()
 	if err != nil {
@@ -20,7 +24,7 @@ func main() {
 	}
 
 	fileName := os.Args[1]
-	absPath, err := filepath.Abs(fileName)
+	absPath, err := getAbsolutePath(fileName)
 	if err != nil {
 		fmt.Println("Error:", err)
 		os.Exit(1)

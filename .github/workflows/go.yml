@@ -1,0 +1,37 @@
+name: Go
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.17']
+        subdir: ['base64_powershell', 'escape_quotes', 'url_encode', 'path']
+    steps:
+
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go }}
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Get dependencies
+      working-directory: ${{ matrix.subdir }}
+      run: go get -v -t -d ./...
+
+    - name: Build
+      working-directory: ${{ matrix.subdir }}
+      run: go build -v
+
+    - name: Test
+      working-directory: ${{ matrix.subdir }}
+      run: go test -v ./...

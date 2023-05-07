@@ -7,6 +7,10 @@ import (
 	"golang.design/x/clipboard"
 )
 
+func urlEncode(input string) string {
+	return url.QueryEscape(input)
+}
+
 func main() {
 	err := clipboard.Init()
 	if err != nil {
@@ -20,7 +24,7 @@ func main() {
 	input := string(data)
 
 	// URI encode the reserved characters
-	encoded := url.QueryEscape(input)
+	encoded := urlEncode(input)
 
 	// Print the encoded string
 	fmt.Println(encoded)
@@ -31,4 +35,3 @@ func main() {
 	// Print confirmation that the encoded string was copied to the clipboard
 	fmt.Println("URL Encoded String Copied to Clipboard!")
 }
-
