@@ -7,6 +7,7 @@ import (
 	"strings"
 	"unicode/utf16"
 
+	"github.com/fatih/color"
 	"golang.design/x/clipboard"
 )
 
@@ -48,5 +49,10 @@ func main() {
 	clipboard.Write(clipboard.FmtText, []byte(utf16LEBase64EncodedStr))
 	fmt.Printf("Base64 encoded: %s\n", base64EncodedStr)
 	fmt.Printf("\nPowerShell encoded (UTF-16LE base64): %s\n", utf16LEBase64EncodedStr)
+
+	// Colorized print
+	color.Set(color.FgYellow) // Set color to yellow
+	fmt.Printf("\nRun with `powershell -e %s`\n", utf16LEBase64EncodedStr)
+	color.Unset() // Reset to default colors
 	fmt.Println("\nPS encoded copied to clipboard!")
 }
