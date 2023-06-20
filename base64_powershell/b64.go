@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/base64"
+	"flag"
 	"fmt"
-	"os"
 	"strings"
 	"unicode/utf16"
 
@@ -27,17 +27,22 @@ func Encode(inputStr string) (string, string) {
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Usage: ./b64 \"STRING TO ENCODE\"")
-		os.Exit(1)
-	}
+	clipboardFlag := flag.Bool("clipboard", false, "Use clipboard content")
+	flag.Parse()
 
 	err := clipboard.Init()
 	if err != nil {
 		panic(err)
 	}
 
-	inputStr := os.Args[1]
+	var inputStr string
+	if *clipboardFlag || len(flag.Args()) == 0 {
+		data := clipboard.Read(clipboard.FmtText)
+		inputStr = string(data)
+	} else {
+		inputStr = flag.Arg(0)
+	}
+
 	base64EncodedStr, utf16LEBase64EncodedStr := Encode(inputStr)
 
 	clipboard.Write(clipboard.FmtText, []byte(utf16LEBase64EncodedStr))
@@ -45,4 +50,3 @@ func main() {
 	fmt.Printf("\nPowerShell encoded (UTF-16LE base64): %s\n", utf16LEBase64EncodedStr)
 	fmt.Println("\nPS encoded copied to clipboard!")
 }
-
