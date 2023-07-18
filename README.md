@@ -3,7 +3,7 @@
 
 #### I reccommend creating aliases for each of them.
 
-##How To Build
+## How To Build
 ```
 ./build_all.sh
 ```
