@@ -5,6 +5,5 @@
 
 ##How To Build
 ```
-sudo chmod +x build_all.sh
 ./build_all.sh
 ```
