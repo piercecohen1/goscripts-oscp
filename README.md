@@ -33,9 +33,9 @@ brew install go
 
 Modify your `.bash_rc` or `.zsh_rc` to add the following lines, replacing the path with the actual path for each:
 ```
-alias urlencode = '/path/to/goscripts-oscp/url_encode/url_encode'
-alias escape_double_quotes = '/path/to/goscripts-oscp/escape_quotes/escape_double_quotes'
-alias psencode = '/path/to/goscripts-oscp/base64_powershell/b64'
-alias path = '/path/to/goscripts-oscp/path/copy_path'
+alias urlencode='/path/to/goscripts-oscp/url_encode/url_encode'
+alias escape_double_quotes='/path/to/goscripts-oscp/escape_quotes/escape_double_quotes'
+alias psencode='/path/to/goscripts-oscp/base64_powershell/b64'
+alias path='/path/to/goscripts-oscp/path/copy_path'
 ```
 Note that if you you relocate the binaries, you will need to update the path for each alias.
