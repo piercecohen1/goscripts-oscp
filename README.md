@@ -47,3 +47,6 @@ alias psencode='/path/to/goscripts-oscp/base64_powershell/b64'
 alias path='/path/to/goscripts-oscp/path/copy_path'
 ```
 Note that if you you relocate the binaries, you will need to update the path for each alias.
+
+## Known Issues
+- Automatically copying to the system clipboard may not work on Linux
