@@ -24,12 +24,20 @@ On macOS:
 brew install go
 ```
 
-### Compile it
+### Build
+
+#### Option 1: Automatic Install (recommended)
+Use the following to automatically build and create aliases:
+```
+./full_install.sh
+```
+
+#### Option 2: Compile only (no aliases)
 ```
 ./build_all.sh
 ```
 
-### (Optional) Create aliases for each program
+(Optional) Manually create aliases for each program
 
 Modify your `.bash_rc` or `.zsh_rc` to add the following lines, replacing the path with the actual path for each:
 ```
